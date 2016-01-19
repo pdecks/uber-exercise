@@ -41,9 +41,35 @@ def countGreaterNumbers(a,  b):
     print "greater_than", greater_than
     return greater_than
 
-
 # a = [4, 5, 5, 2, 3, 7, 8, 1, 1, 1]
-a = [3, 4, 1, 2, 4, 6]
-b = [1, 2, 3, 4, 5, 6]
+# a = [3, 4, 1, 2, 4, 6]
+# b = [1, 2, 3, 4, 5, 6]
+# countGreaterNumbers(a, b)
 
-countGreaterNumbers(a, b)
+def  maxStreak( s,  k):
+    # find the highest start index where there are k-consecutive Ws
+    # else find k-1 and 1 separated by 
+    streaks = {}  # key = max streak, value equal starting index
+
+    i = 0
+    j = 0
+    counts = 0
+    start_index = j
+    while i < len(s):
+        if s[i] == 'W':
+            if counts == 0:
+                start_index = i
+            counts += 1
+            i += 1
+        elif counts != 0:
+            if streaks.get(counts, 0) == 0:
+                streaks[counts] = [start_index]
+            else:
+                streaks[counts].append(start_index)
+            counts = 0
+        else:
+            i += 1
+    print streaks
+
+string = 'WBBBWWBWWWWB'
+maxStreak(string, 2)
