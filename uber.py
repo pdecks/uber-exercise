@@ -69,13 +69,14 @@ def  maxStreak( s,  k):
             counts = 0
         else:
             i += 1
-    print streaks
+    # print streaks
 
     max_start_index = max(streaks[k]) + 1
     result = [max_start_index]
-    for i in range(2,k):
-        result.append(i)
+    for i in range(1,k):
+        result.append(max_start_index + i)
+
     return result
 
 string = 'WBBBWWBWWWWB'
-maxStreak(string, 2)
+print maxStreak(string, 2)
